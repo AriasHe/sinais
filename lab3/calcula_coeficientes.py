@@ -27,6 +27,15 @@ def resposta_frequenciua(w,wc,n,e):
         i = i + 1 
     return Habs
 
+def resposta_frequenciua_Butterworth(w,wc,n):
+    i = 0 
+    Hc = []
+    Habs = []
+    for w_ in w:
+        H = 1/(math.sqrt(1 + ((w_/wc)**(2*n))))
+        Hc.append(H)
+        Habs.append(abs(H))
+    return Habs
 
 def calcula_coeficientes(w,wc,n):
     
@@ -36,13 +45,14 @@ def calcula_coeficientes(w,wc,n):
     Tn[abs(w) >= wc] = np.cosh(n*np.arccosh(w[abs(w) >= wc] / wc))
     return Tn
 
-def grafico(nT,title,xlable,ylable,w,Habs_vector):
+def grafico(nT,title,xlable,ylable,w,Habs_vector,texto,arredondamento):
 
     color = ["blue", "orange", "red","green","purple"]
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.set_title(title)
     ax.set_xlabel(xlable)
     ax.set_ylabel(ylable)
-    for i in range (0,nT,1):
-        ax.plot(w, Habs_vector[i],color[i],label = str(i+1) + " harmônica")
+    for i in range(len(nT)):
+        ax.plot(w, Habs_vector[len(nT)-i-1],color[i],label =  texto + str(f"{nT[len(nT)-i-1]:.{arredondamento}f}"))
+
         ax.legend()
