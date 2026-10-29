@@ -22,10 +22,10 @@ def resposta_frequenciua(w,wc,n,e):
     Tn = calcula_coeficientes(w,wc,n)
     for w_ in w:
         H = 1/(math.sqrt(1 + (e**2*Tn[i]**2*(abs(w_)/wc))))
-        Hc.append(H)
+        Hc.append((H))
         Habs.append(abs(H))
         i = i + 1 
-    return Habs
+    return Habs, Hc
 
 def resposta_frequenciua_Butterworth(w,wc,n):
     i = 0 
@@ -33,9 +33,9 @@ def resposta_frequenciua_Butterworth(w,wc,n):
     Habs = []
     for w_ in w:
         H = 1/(math.sqrt(1 + ((w_/wc)**(2*n))))
-        Hc.append(H)
+        Hc.append(np.angle(H))
         Habs.append(abs(H))
-    return Habs
+    return Habs, Hc
 
 def calcula_coeficientes(w,wc,n):
     
