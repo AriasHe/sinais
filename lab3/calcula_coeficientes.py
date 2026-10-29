@@ -45,14 +45,14 @@ def calcula_coeficientes(w,wc,n):
     Tn[abs(w) >= wc] = np.cosh(n*np.arccosh(abs(w[abs(w) >= wc] / wc)))
     return Tn
 
-def grafico(w,Habs_vector,title = "titulo",xlable = 'x',ylable = 'y',texto = "",arredondamento = 0):
+def grafico(w,Habs_vector,curvas = [],title = "titulo",xlable = '\u03C9 (rad/s)', ylable = '|H(jw)|',texto = "",arredondamento = 0):
     nT = len(Habs_vector)
-    color = ["blue", "orange", "red","green","purple"]
+    color = ["blue", "orange", "green","red","purple"]
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.set_title(title)
     ax.set_xlabel(xlable)
     ax.set_ylabel(ylable)
     for i in range(nT):
-        ax.plot(w, Habs_vector[nT-i-1],color[i],label =  texto + str(f"{i:.{arredondamento}f}"))
-
+        x = curvas[nT-i-1]
+        ax.plot(w, Habs_vector[nT-i-1],color[i],label =  texto + (curvas[nT-i-1] if type(x) == str else f"{curvas[nT-i-1]:.{arredondamento}f}"))
     ax.legend()
