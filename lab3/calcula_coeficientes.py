@@ -17,25 +17,21 @@ import matplotlib.pyplot as plt
 
 def resposta_frequenciua(w,wc,n,e):
     i = 0 
-    Hc = []
     Habs = []
     Tn = calcula_coeficientes(w,wc,n)
     for w_ in w:
         H = 1/(math.sqrt(1 + (e**2*Tn[i]**2*(abs(w_)/wc))))
-        Hc.append((H))
         Habs.append(abs(H))
         i = i + 1 
-    return Habs, Hc
+    return Habs
 
 def resposta_frequenciua_Butterworth(w,wc,n):
     i = 0 
-    Hc = []
     Habs = []
     for w_ in w:
         H = 1/(math.sqrt(1 + ((w_/wc)**(2*n))))
-        Hc.append(np.angle(H))
         Habs.append(abs(H))
-    return Habs, Hc
+    return Habs
 
 def calcula_coeficientes(w,wc,n):
     
@@ -56,3 +52,4 @@ def grafico(w,Habs_vector,curvas = [],title = "titulo",xlable = '\u03C9 (rad/s)'
         x = curvas[nT-i-1]
         ax.plot(w, Habs_vector[nT-i-1],color[i],label =  texto + (curvas[nT-i-1] if type(x) == str else f"{curvas[nT-i-1]:.{arredondamento}f}"))
     ax.legend()
+    return ax,fig
