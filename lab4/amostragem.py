@@ -14,7 +14,7 @@ def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude'):
     w = np.linspace(0,2*math.pi,Y.size)
     f = np.linspace(0,fs,Y.size)
 
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(6, 5))
 
     if(c == 'w'):
 
