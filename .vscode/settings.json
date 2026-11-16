@@ -1,0 +1,10 @@
+{
+    "chat.agent.codeBlockProgress": false,
+    "chat.agent.sandbox.retryWithAllowNetworkRequests": false,
+    "chat.agent.thinking.generateTitles": false,
+    "chat.math.enabled": false,
+    "chat.editor.codex.preferAgentHost": false,
+    "chat.editor.localAgent.enabled": false,
+    "chat.editor.workingSet.enabled": false,
+    "chat.tools.riskAssessment.enabled": false
+}
