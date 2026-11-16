@@ -11,8 +11,8 @@ def espectro(y):
 
 def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude'):
     
-    w = np.linspace(0,2*math.pi,Y.size)
-    f = np.linspace(0,fs,Y.size)
+    w = np.linspace(0,2*math.pi,len(Y))
+    f = np.linspace(0,fs,len(Y))
 
     fig, ax = plt.subplots(figsize=(6, 5))
 
@@ -27,6 +27,11 @@ def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude'):
         ax.set_ylabel('|$Y(e^{j\Omega})$|', fontsize=10)
         ax.set_xticks(ticks)
         ax.set_xticklabels(labels, fontsize=10)
+    else:
+        ax.plot(f[:int(len(Y)/2)], Y[:int(len(Y)/2)])
+        ax.set_xlabel('$f$ [Hz]', fontsize=10)
+        ax.set_ylabel('|$Y(e^{j\omega})$|', fontsize=10)
+        
     ax.set_title(titulo,fontsize = 10)    
     ax.tick_params(axis='both', which='both', width=1, color='red')
     ax.grid(True, linestyle='-.', linewidth=0.5, color='gray')
