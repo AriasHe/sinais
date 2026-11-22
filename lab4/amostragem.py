@@ -9,7 +9,7 @@ def espectro(y):
     Y = np.abs(np.fft.fft(y))
     return Y
 
-def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude'):
+def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude',div = 2):
     
     w = np.linspace(0,2*math.pi,len(Y))
     f = np.linspace(0,fs,len(Y))
@@ -28,7 +28,7 @@ def grafico(Y,fs,c='w',titulo = 'Espectro de magnitude'):
         ax.set_xticks(ticks)
         ax.set_xticklabels(labels, fontsize=10)
     else:
-        ax.plot(f[:int(len(Y)/2)], Y[:int(len(Y)/2)])
+        ax.plot(f[:int(len(Y)/div)], Y[:int(len(Y)/div)])
         ax.set_xlabel('$f$ [Hz]', fontsize=10)
         ax.set_ylabel('|$Y(e^{j\omega})$|', fontsize=10)
         
