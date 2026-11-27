@@ -9,7 +9,7 @@ def espectro(y):
     Y = np.abs(np.fft.fft(y))
     return Y
 
-def grafico(Y,fs=1,f1=[],c='w',titulo = 'Espectro de magnitude',div = 1):
+def grafico(Y,fs=1,f1=[],c='w',titulo = 'Espectro de magnitude',div = 1,fig=1,ax=1):
     
     w = np.linspace(0,2*math.pi,len(Y))
 
@@ -17,7 +17,8 @@ def grafico(Y,fs=1,f1=[],c='w',titulo = 'Espectro de magnitude',div = 1):
         f = np.linspace(0,fs,np.size(Y))
     else:
         f=f1
-    fig, ax = plt.subplots(figsize=(6, 5))
+    if(fig == 1):
+        fig, ax = plt.subplots(figsize=(6, 5))
 
     if(c == 'w'):
 
